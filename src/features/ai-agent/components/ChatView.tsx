@@ -4,6 +4,7 @@ import type { Message } from "../types";
 import { BOOK_FILTERS } from "../types";
 import PromptInput from "./PromptInput";
 import styles from "./ChatView.module.css";
+import Markdown from "react-markdown";
 
 interface ChatViewProps {
   messages: Message[];
@@ -49,7 +50,7 @@ const ChatView = ({
                   : styles.bubbleAssistant
               }
             >
-              {message.content}
+              <Markdown>{message.content}</Markdown>
             </div>
           </div>
         ))}

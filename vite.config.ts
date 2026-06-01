@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => {
     "/api/ai-agent": {
       target: AI_AGENT_TARGET,
       changeOrigin: true,
-      rewrite: (path: string) => path.replace(/^\/api\/ai-agent/, ""),
+      rewrite: () => "/api/v1/agent",
       headers: apiKey ? { "X-API-KEY": apiKey } : undefined,
     },
   };
