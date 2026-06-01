@@ -2,7 +2,7 @@ import axios from "axios";
 import type { ApiFilter } from "../types";
 
 export async function fetchAIResponse(query: string, filters: ApiFilter[]) {
-  const response = await axios.post("/api/proxy", {
+  const response = await axios.post("/api/ai-agent", {
     query,
     filters,
   });
