@@ -24,3 +24,6 @@ AQYL_MED is currently in its **MVP (Minimum Viable Product)** phase.
 * **🟢 AI Agent Module (Completed):** The core chat bot interface is fully functional. It communicates asynchronously with our backend service to deliver fast, contextual, and responsive AI medical mentoring.
 * **🟡 Smart Library & Science Hub (In Progress):** Developing frontend schemas and underlying database connection setups to handle heavy documents.
 * **🔴 Competency Map & Exam Prep (Planned):** Visual components and analytic tools are in the active design phase.
+
+## Demo
+https://aqylmed-frontend.vercel.app/
