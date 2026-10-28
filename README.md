@@ -1,12 +1,12 @@
-# AQYL_MED
+# AQYLMED
 
-AQYL_MED is a next-generation EdTech platform tailored specifically for medical students. The platform bridges the gap between massive academic medical syllabi and student success by integrating advanced software engineering practices with predictive analytics and Artificial Intelligence. 
+AQYLMED is a next-generation EdTech platform tailored specifically for medical students. The platform bridges the gap between massive academic medical syllabi and student success by integrating advanced software engineering practices with predictive analytics and Artificial Intelligence. 
 
 Our mission is to streamline complex clinical learning, provide real-time guidance through an AI mentor, and help students track their competencies efficiently.
 
 ## About the Project
 
-Medical education requires mastering vast amounts of information under strict guidelines. AQYL_MED redefines this learning curve by offering a centralized dashboard designed for modern medical universities. 
+Medical education requires mastering vast amounts of information under strict guidelines. AQYLMED redefines this learning curve by offering a centralized dashboard designed for modern medical universities. 
 
 ## Tech Stack (Frontend Part)
 * **Core:** React (with TypeScript)
@@ -19,7 +19,7 @@ Medical education requires mastering vast amounts of information under strict gu
 
 ## Current Status
 
-AQYL_MED is currently in its **MVP (Minimum Viable Product)** phase. 
+AQYLMED is currently in its **MVP (Minimum Viable Product)** phase. 
 
 * **🟢 AI Agent Module (Completed):** The core chat bot interface is fully functional. It communicates asynchronously with our backend service to deliver fast, contextual, and responsive AI medical mentoring.
 * **🟡 Smart Library & Science Hub (In Progress):** Developing frontend schemas and underlying database connection setups to handle heavy documents.
