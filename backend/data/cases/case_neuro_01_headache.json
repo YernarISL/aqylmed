@@ -1,0 +1,58 @@
+{
+  "code": "CASE-NEURO-01",
+  "title": "Recurrent headache",
+  "specialty": "Neurology",
+  "difficulty": "easy",
+  "status": "published",
+
+  "patient": {"name": "Dana", "sex": "female", "age": {"min": 22, "max": 34}, "occupation": "graphic designer"},
+  "personality": "Tired, speaks quietly, asks to dim the light",
+  "chief_complaint": "Doctor, I keep getting terrible headaches, and today it's very bad again.",
+  "history_present_illness": "Headaches started about two years ago, 2-3 times a month. Each attack lasts from several hours to a whole day if I do not take a pill. The pain is on one side, usually the right temple, throbbing, and gets worse when I walk or climb stairs. During attacks I feel sick, sometimes vomit, and light and noise are unbearable, I lie in a dark room. Before the headache there are no flashes or zigzags in the eyes. Attacks often come before my period, after a sleepless night or when I skip meals. Ibuprofen helped earlier, now it helps less.",
+  "symptoms": [
+    {"name": "headache", "details": "one-sided, usually right temple, throbbing, 8 out of 10; lasts 6-24 hours; 2-3 times a month for two years"},
+    {"name": "worse with activity", "details": "walking and climbing stairs make it worse"},
+    {"name": "nausea", "details": "during every attack, sometimes vomiting"},
+    {"name": "sensitivity to light and noise", "details": "during attacks, needs a dark quiet room"},
+    {"name": "triggers", "details": "before menstruation, lack of sleep, skipped meals"}
+  ],
+  "negative_symptoms": ["flashes or zigzag lines before the headache", "weakness or numbness in arm or leg", "speech problems", "fever", "stiff neck", "sudden worst headache of life", "headache that wakes her at night", "head injury", "double vision", "fainting", "weight loss"],
+  "past_medical_history": "Healthy. No head injuries. No operations.",
+  "medications": "Ibuprofen 400 mg during attacks, about 6-8 days a month. Combined oral contraceptive pill — no. No other medication.",
+  "allergies": "None",
+  "family_history": "Mother has had 'migraines' since her youth.",
+  "social_history": "Works at the computer 9-10 hours a day, often sleeps 5-6 hours. Drinks 3-4 cups of coffee a day. Does not smoke, alcohol rarely.",
+
+  "vitals": {
+    "temperature_c": {"min": 36.4, "max": 36.8},
+    "heart_rate_bpm": {"min": 72, "max": 84},
+    "systolic_bp": {"min": 110, "max": 122},
+    "diastolic_bp": {"min": 70, "max": 78},
+    "resp_rate": {"min": 14, "max": 18},
+    "spo2_pct": {"min": 98, "max": 99}
+  },
+  "test_results": {
+    "General inspection": "Pale, photophobic, prefers to keep eyes closed. No rash.",
+    "Neurological examination": "Conscious, oriented. Cranial nerves intact, pupils equal and reactive. No papilloedema on fundoscopy. Strength 5/5 in all limbs, reflexes symmetric, no pathological reflexes. Coordination normal. No meningeal signs (neck supple, Kernig negative).",
+    "Head CT": "No intracranial abnormalities (CT is not routinely indicated: no red flags)."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["Neurological examination"],
+  "test_reference_queries": {
+    "Neurological examination": "neurological examination to exclude secondary headache red flags"
+  },
+  "diagnosis": {"code": "G43.0", "name": "Migraine without aura"},
+  "accepted_codes": ["G43.9"],
+  "related_codes": ["G43.1", "G44.2", "R51"],
+  "differential": ["Tension-type headache", "Medication-overuse headache", "Cluster headache", "Secondary headache (SAH, mass lesion)"],
+  "key_questions": [
+    {"id": "pattern", "label": "Onset, frequency and duration of attacks", "keywords": ["how often", "how long", "when did", "since when", "frequency", "how many times", "когда", "как часто"], "reference_query": "diagnostic criteria migraine without aura attack duration frequency"},
+    {"id": "location_character", "label": "Location and character of the pain", "keywords": ["where", "one side", "both sides", "throbbing", "pulsat", "what kind", "describe", "где", "характер"], "reference_query": "unilateral pulsating headache migraine"},
+    {"id": "associated", "label": "Nausea, photophobia, phonophobia", "keywords": ["nause", "vomit", "light", "noise", "sound", "тошн", "свет", "шум"], "reference_query": "nausea photophobia phonophobia migraine criteria"},
+    {"id": "aura", "label": "Aura before the headache", "keywords": ["aura", "flash", "zigzag", "vision", "see before", "warning", "аура", "вспышк"], "reference_query": "migraine aura visual symptoms"},
+    {"id": "activity", "label": "Effect of physical activity", "keywords": ["activity", "walk", "stairs", "exercise", "movement", "нагрузк", "ходьб"], "reference_query": "aggravation by routine physical activity migraine"},
+    {"id": "triggers", "label": "Triggers (menstruation, sleep, food, stress)", "keywords": ["trigger", "brings on", "period", "menstru", "sleep", "stress", "провоцир", "менстру"], "reference_query": "migraine triggers menstruation sleep deprivation"},
+    {"id": "red_flags", "label": "Red flags (sudden onset, fever, neuro deficit, trauma)", "keywords": ["sudden", "worst", "fever", "weak", "numb", "speech", "injur", "trauma", "neck", "внезап", "слабост", "травм"], "reference_query": "red flags secondary headache SNOOP"},
+    {"id": "medication_use", "label": "Painkiller use (overuse risk)", "keywords": ["medic", "pill", "painkiller", "ibuprofen", "take", "лекарств", "таблет", "обезбол"], "reference_query": "medication overuse headache analgesic days per month"}
+  ]
+}

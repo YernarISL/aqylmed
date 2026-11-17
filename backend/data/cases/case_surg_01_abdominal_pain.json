@@ -1,0 +1,63 @@
+{
+  "code": "CASE-SURG-01",
+  "title": "Abdominal pain",
+  "specialty": "Surgery",
+  "difficulty": "easy",
+  "status": "published",
+
+  "patient": {"name": "Arman", "sex": "male", "age": {"min": 19, "max": 27}, "occupation": "university student"},
+  "personality": "A little scared, holds his belly, answers briefly",
+  "chief_complaint": "Doctor, my belly has hurt badly since the night, on the lower right.",
+  "history_present_illness": "The pain started yesterday at about 10 pm around the belly button, dull. By the morning it moved to the lower right part of the belly, became constant and stronger. It gets worse when I walk, cough or when the car shakes. I took a No-Spa tablet, it did not help.",
+  "symptoms": [
+    {"name": "abdominal pain", "details": "first around the navel, a few hours later moved to the lower right; constant, aching, 7 out of 10; worse when walking and coughing"},
+    {"name": "nausea", "details": "since the morning"},
+    {"name": "vomiting", "details": "once in the morning, food, no relief"},
+    {"name": "loss of appetite", "details": "since yesterday evening does not want to eat"},
+    {"name": "fever", "details": "measured 37.8 at home this morning"}
+  ],
+  "negative_symptoms": ["diarrhoea", "constipation", "blood in stool", "pain or burning when urinating", "frequent urination", "blood in urine", "back pain", "cough", "chest pain", "jaundice"],
+  "past_medical_history": "Chickenpox in childhood. No operations. No chronic diseases.",
+  "medications": "Nothing regularly. Took one tablet of No-Spa (drotaverine) yesterday.",
+  "allergies": "None",
+  "family_history": "Father has high blood pressure. Does not know about other diseases.",
+  "social_history": "Does not smoke. Alcohol rarely, on holidays. Lives in a dormitory.",
+
+  "vitals": {
+    "temperature_c": {"min": 37.5, "max": 38.0},
+    "heart_rate_bpm": {"min": 92, "max": 104},
+    "systolic_bp": {"min": 118, "max": 130},
+    "diastolic_bp": {"min": 70, "max": 82},
+    "resp_rate": {"min": 16, "max": 20},
+    "spo2_pct": {"min": 97, "max": 99}
+  },
+  "test_results": {
+    "General inspection": "Moderate condition. Lies on the right side with legs drawn up. Tongue dry with white coating.",
+    "Abdominal palpation": "Tenderness and muscle guarding in the right iliac fossa. Positive Shchetkin-Blumberg (rebound), Rovsing, Sitkovsky and Bartomier-Michelson signs. Pasternatsky sign negative on both sides.",
+    "Complete blood count": "WBC 14.2 ×10⁹/L, neutrophils 82%, band forms 10%. Hb 148 g/L, platelets 260 ×10⁹/L.",
+    "Urinalysis": "Straw-coloured, specific gravity 1.020, protein absent, WBC 1-2 per field, RBC 0-1 per field. No bacteria.",
+    "C-reactive protein": "CRP 46 mg/L (reference < 5).",
+    "Abdominal ultrasound": "Non-compressible tubular structure 9 mm in diameter in the right iliac region, periappendiceal fat thickened, small amount of fluid nearby. Kidneys without dilatation, no stones."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["Abdominal palpation", "Complete blood count", "Abdominal ultrasound"],
+  "test_reference_queries": {
+    "Abdominal palpation": "peritoneal signs in acute appendicitis rebound tenderness Rovsing",
+    "Complete blood count": "leukocytosis in acute appendicitis",
+    "Abdominal ultrasound": "ultrasound diagnosis of acute appendicitis non-compressible appendix"
+  },
+  "diagnosis": {"code": "K35.8", "name": "Acute appendicitis"},
+  "accepted_codes": ["K35.3"],
+  "related_codes": ["K35.2", "R10.4"],
+  "differential": ["Renal colic", "Acute pyelonephritis", "Mesenteric lymphadenitis", "Crohn's disease", "Acute gastroenteritis"],
+  "key_questions": [
+    {"id": "onset", "label": "Onset and time course of the pain", "keywords": ["when did", "since when", "how long", "start", "began", "когда"], "reference_query": "clinical presentation acute appendicitis onset"},
+    {"id": "migration", "label": "Pain migration (Kocher's sign)", "keywords": ["move", "migrat", "where did it start", "first", "change place", "перемест", "сначала"], "reference_query": "Kocher sign migration of pain from epigastrium to right iliac fossa"},
+    {"id": "character", "label": "Character and intensity of the pain", "keywords": ["what kind of pain", "describe", "sharp", "dull", "constant", "cramp", "how strong", "характер"], "reference_query": "character of abdominal pain in appendicitis"},
+    {"id": "aggravating", "label": "What makes the pain worse (walking, coughing)", "keywords": ["worse", "cough", "walk", "movement", "усилива", "кашл"], "reference_query": "pain aggravated by movement and coughing peritoneal irritation"},
+    {"id": "nausea_vomiting", "label": "Nausea and vomiting", "keywords": ["nause", "vomit", "sick", "тошн", "рвот"], "reference_query": "nausea vomiting anorexia appendicitis"},
+    {"id": "fever", "label": "Fever", "keywords": ["fever", "temperature", "температур"], "reference_query": "fever in acute appendicitis"},
+    {"id": "urinary", "label": "Urinary symptoms (to exclude renal pathology)", "keywords": ["urin", "pee", "toilet", "мочеисп", "моч"], "reference_query": "differential diagnosis appendicitis renal colic urinary symptoms"},
+    {"id": "bowel", "label": "Bowel habits (diarrhoea, constipation)", "keywords": ["stool", "bowel", "diarr", "constip", "стул", "понос", "запор"], "reference_query": "bowel habits in differential diagnosis of right iliac fossa pain"}
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "code": "CASE-IM-02",
+  "title": "Cough and fever",
+  "specialty": "Internal Medicine",
+  "difficulty": "easy",
+  "status": "published",
+
+  "patient": {"name": "Aigerim", "sex": "female", "age": {"min": 32, "max": 45}, "occupation": "school teacher"},
+  "personality": "Tired, coughs between phrases, speaks calmly",
+  "chief_complaint": "Doctor, I have had a high fever and a bad cough for three days.",
+  "history_present_illness": "Three days ago I suddenly got chills and a fever up to 39.2. The next day a cough started, first dry, now with thick rusty-yellow phlegm. Since yesterday there is a stabbing pain on the right side of the chest when I breathe in deeply or cough. I feel weak and short of breath when I walk around the flat. Paracetamol brings the fever down only for a few hours. Before this, a week ago, I had a runny nose.",
+  "symptoms": [
+    {"name": "fever", "details": "up to 39.2, with shaking chills, for three days"},
+    {"name": "cough", "details": "first dry, from day two with thick rusty-yellow sputum"},
+    {"name": "chest pain", "details": "right lower side, stabbing, only when breathing in deeply or coughing"},
+    {"name": "shortness of breath", "details": "when walking around the flat"},
+    {"name": "weakness", "details": "strong, lost appetite"}
+  ],
+  "negative_symptoms": ["blood in sputum", "wheezing", "leg swelling", "pain in the calf", "rash", "sore throat now", "diarrhoea", "pain when urinating", "headache with stiff neck", "weight loss before this illness"],
+  "past_medical_history": "Healthy. Had flu a few times. No asthma, no chronic lung or heart disease. No operations.",
+  "medications": "Paracetamol 500 mg up to 3 times a day for the fever. No regular medication. No antibiotics taken.",
+  "allergies": "None",
+  "family_history": "Parents have high blood pressure. No tuberculosis in the family as far as she knows.",
+  "social_history": "Does not smoke, no alcohol. Many pupils at school have been sick recently. No travel. Lives with husband and two children.",
+
+  "vitals": {
+    "temperature_c": {"min": 38.6, "max": 39.2},
+    "heart_rate_bpm": {"min": 100, "max": 112},
+    "systolic_bp": {"min": 110, "max": 122},
+    "diastolic_bp": {"min": 70, "max": 80},
+    "resp_rate": {"min": 22, "max": 26},
+    "spo2_pct": {"min": 92, "max": 94}
+  },
+  "test_results": {
+    "General inspection": "Moderately ill, flushed face, lips slightly dry. No cyanosis. Breathing shallow, right side lags behind during breathing.",
+    "Lung percussion": "Dullness over the right lower lobe posteriorly, below the angle of the scapula.",
+    "Lung auscultation": "Bronchial breathing and late inspiratory crepitations over the right lower lobe. Increased vocal resonance there. Left lung clear.",
+    "Heart auscultation": "Tachycardia, regular rhythm, no murmurs.",
+    "Complete blood count": "WBC 15.8 ×10⁹/L, neutrophils 84% with left shift (band forms 9%), Hb 128 g/L, platelets 260 ×10⁹/L, ESR 42 mm/h.",
+    "C-reactive protein": "CRP 148 mg/L (reference < 5).",
+    "Chest X-ray": "Homogeneous consolidation of the right lower lobe with air bronchogram. No pleural effusion. Heart size normal.",
+    "Pulse oximetry": "SpO2 93% on room air.",
+    "Blood biochemistry": "Urea 6.1 mmol/L, creatinine 78 µmol/L, glucose 5.6 mmol/L, sodium 137 mmol/L."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["Chest X-ray", "Complete blood count"],
+  "test_reference_queries": {
+    "Chest X-ray": "chest radiograph lobar consolidation community-acquired pneumonia diagnosis",
+    "Complete blood count": "leukocytosis neutrophilia in bacterial pneumonia"
+  },
+  "diagnosis": {"code": "J18.1", "name": "Lobar pneumonia, unspecified"},
+  "accepted_codes": ["J13", "J15.9", "J18.9"],
+  "related_codes": ["J18.0", "J20.9", "J11.1"],
+  "differential": ["Acute bronchitis", "Influenza", "Pulmonary embolism", "Pulmonary tuberculosis", "Pleurisy"],
+  "key_questions": [
+    {"id": "onset", "label": "Onset and course of the illness", "keywords": ["when did", "since when", "how long have", "start", "began", "когда", "давно"], "reference_query": "acute onset community-acquired pneumonia clinical presentation"},
+    {"id": "fever", "label": "Fever and chills", "keywords": ["fever", "temperature", "chill", "температур", "озноб"], "reference_query": "fever and chills in pneumococcal pneumonia"},
+    {"id": "cough_sputum", "label": "Cough and sputum characteristics", "keywords": ["cough", "sputum", "phlegm", "mucus", "кашл", "мокрот"], "reference_query": "productive cough rusty sputum lobar pneumonia"},
+    {"id": "pleuritic_pain", "label": "Chest pain related to breathing", "keywords": ["chest pain", "pain when breath", "hurt when you breathe", "боль в груди", "при вдохе"], "reference_query": "pleuritic chest pain pneumonia"},
+    {"id": "dyspnoea", "label": "Shortness of breath", "keywords": ["short of breath", "breathless", "breathing difficult", "hard to breathe", "одышк"], "reference_query": "dyspnea severity assessment community-acquired pneumonia"},
+    {"id": "contacts_travel", "label": "Sick contacts, travel, TB exposure", "keywords": ["contact", "anyone sick", "around you", "travel", "tuberculosis", "контакт", "туберкул", "поездк"], "reference_query": "epidemiological history community-acquired pneumonia tuberculosis exposure"},
+    {"id": "treatment", "label": "Self-treatment and antibiotics taken", "keywords": ["medic", "pills", "antibiotic", "took", "taking", "treat", "лекарств", "антибиот", "лечил"], "reference_query": "prior antibiotic use and empirical therapy pneumonia"},
+    {"id": "comorbidity", "label": "Chronic diseases, smoking", "keywords": ["chronic", "asthma", "smok", "illnesses", "diseases", "хронич", "кур", "болели"], "reference_query": "risk factors and comorbidities CURB-65 pneumonia"}
+  ]
+}

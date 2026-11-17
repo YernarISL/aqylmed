@@ -1,0 +1,56 @@
+{
+  "code": "CASE-SURG-02",
+  "title": "Pain under the right ribs",
+  "specialty": "Surgery",
+  "difficulty": "medium",
+  "status": "draft",
+
+  "patient": {"name": "Gulnara", "sex": "female", "age": {"min": 45, "max": 58}, "occupation": "shop assistant"},
+  "personality": "Irritable because of the pain, answers in detail",
+  "chief_complaint": "Doctor, since last night I have strong pain under the right ribs.",
+  "history_present_illness": "Yesterday evening after a family dinner with fatty fried food a strong pain started under the right ribs. It has not stopped for more than 12 hours, it goes to the right shoulder blade. I vomited twice with bile, it did not help. In the morning the temperature was 38.1. Before, after fatty food, I had short attacks of pain in the same place that went away in an hour.",
+  "symptoms": [
+    {"name": "right upper abdominal pain", "details": "constant for more than 12 hours, 8 out of 10, started after fatty food"},
+    {"name": "pain spreading", "details": "to the right shoulder blade"},
+    {"name": "vomiting", "details": "twice, with bile, no relief"},
+    {"name": "fever", "details": "38.1 in the morning"},
+    {"name": "previous attacks", "details": "short attacks after fatty food during the last year"}
+  ],
+  "negative_symptoms": ["yellow skin or eyes", "dark urine", "pale stool", "diarrhoea", "chest pain", "cough", "pain when urinating", "back pain on the left"],
+  "past_medical_history": "Overweight. Three deliveries. No operations.",
+  "medications": "Nothing regularly. Took No-Spa at night, it did not help.",
+  "allergies": "None",
+  "family_history": "Mother was operated for gallstones.",
+  "social_history": "Does not smoke, alcohol rarely. Likes fatty and fried food.",
+
+  "vitals": {
+    "temperature_c": {"min": 37.8, "max": 38.4},
+    "heart_rate_bpm": {"min": 96, "max": 108},
+    "systolic_bp": {"min": 130, "max": 145},
+    "diastolic_bp": {"min": 80, "max": 90},
+    "resp_rate": {"min": 18, "max": 20},
+    "spo2_pct": {"min": 96, "max": 98}
+  },
+  "test_results": {
+    "Abdominal palpation": "Tenderness and guarding in the right upper quadrant, positive Murphy, Ortner and Mussi-Georgievsky (phrenicus) signs. No peritoneal signs elsewhere.",
+    "Complete blood count": "WBC 13.6 ×10⁹/L, neutrophils 80%.",
+    "Blood biochemistry": "Total bilirubin 19 µmol/L, ALT 42 U/L, AST 38 U/L, alkaline phosphatase 130 U/L, amylase 64 U/L.",
+    "Abdominal ultrasound": "Gallbladder distended, wall thickened to 5 mm with double contour, multiple stones up to 15 mm, one impacted in the neck. Positive sonographic Murphy sign. Common bile duct 5 mm."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["Abdominal ultrasound", "Complete blood count"],
+  "diagnosis": {"code": "K80.0", "name": "Calculus of gallbladder with acute cholecystitis"},
+  "accepted_codes": ["K81.0"],
+  "related_codes": ["K80.2", "K85.9"],
+  "differential": ["Biliary colic", "Acute pancreatitis", "Peptic ulcer perforation", "Right-sided pyelonephritis"],
+  "key_questions": [
+    {"id": "onset", "label": "Onset and duration of the pain", "keywords": ["when did", "how long", "since when", "start", "когда"], "reference_query": "acute cholecystitis pain duration more than 6 hours"},
+    {"id": "trigger", "label": "Relation to food", "keywords": ["food", "eat", "meal", "fatty", "еда", "жирн"], "reference_query": "fatty meal trigger biliary pain"},
+    {"id": "radiation", "label": "Radiation of the pain", "keywords": ["spread", "radiat", "go anywhere", "shoulder", "отда", "иррадиир"], "reference_query": "radiation of biliary pain to right scapula"},
+    {"id": "vomiting", "label": "Nausea and vomiting", "keywords": ["nause", "vomit", "тошн", "рвот"], "reference_query": "vomiting in acute cholecystitis"},
+    {"id": "fever", "label": "Fever", "keywords": ["fever", "temperature", "температур"], "reference_query": "fever in acute cholecystitis Tokyo guidelines"},
+    {"id": "jaundice", "label": "Jaundice, urine and stool colour", "keywords": ["yellow", "jaundice", "urine colour", "dark urine", "stool colour", "желт", "моча"], "reference_query": "jaundice choledocholithiasis cholangitis"},
+    {"id": "previous_attacks", "label": "Previous similar attacks", "keywords": ["before", "previous", "happened", "раньше", "приступ"], "reference_query": "history of biliary colic gallstone disease"},
+    {"id": "family", "label": "Family history of gallstones", "keywords": ["family", "mother", "father", "relatives", "родствен", "мама"], "reference_query": "risk factors gallstones female fertile forty fat family"}
+  ]
+}

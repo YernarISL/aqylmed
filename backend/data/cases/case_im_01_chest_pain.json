@@ -1,0 +1,66 @@
+{
+  "code": "CASE-IM-01",
+  "title": "Chest pain",
+  "specialty": "Internal Medicine",
+  "difficulty": "medium",
+  "status": "published",
+
+  "patient": {"name": "Serik", "sex": "male", "age": {"min": 50, "max": 65}, "occupation": "taxi driver"},
+  "personality": "Worried, a little short of breath when talking, answers briefly and to the point",
+  "chief_complaint": "Doctor, I have this pressing pain in my chest, and it keeps coming back.",
+  "history_present_illness": "For about a year I sometimes had chest pressure when climbing stairs, it went away after 2-3 minutes of rest. Over the last 5 days the pain comes more often, after walking only one block, and lasts up to 15 minutes. Yesterday evening it came even at rest while watching TV and lasted about 15 minutes. A neighbour gave me a nitroglycerin tablet under the tongue and the pain eased after a few minutes. Today in the morning it happened again at rest.",
+  "symptoms": [
+    {"name": "chest pain", "details": "behind the breastbone, pressing, squeezing, like a heavy weight; 7 out of 10; lasts 10-15 minutes; started a year ago only on stairs, the last 5 days much more often and now even at rest"},
+    {"name": "pain spreading", "details": "goes to the left arm and sometimes to the left side of the jaw"},
+    {"name": "shortness of breath", "details": "during the pain episodes"},
+    {"name": "cold sweat", "details": "during the last two episodes"},
+    {"name": "relief", "details": "rest helped before; nitroglycerin under the tongue helped yesterday within a few minutes"}
+  ],
+  "negative_symptoms": ["fever", "cough", "pain when breathing in", "pain when pressing on the chest", "pain that changes with body position", "heartburn or sour taste", "leg swelling", "fainting", "palpitations", "recent long trips or immobilization", "back pain between shoulder blades"],
+  "past_medical_history": "High blood pressure for 10 years, takes pills irregularly. Told about 'high cholesterol' two years ago but did not treat it. No diabetes known. No operations.",
+  "medications": "Enalapril 10 mg, often forgets to take it. Took one nitroglycerin tablet yesterday.",
+  "allergies": "None",
+  "family_history": "Father had a heart attack at 58 and died at 62. Mother has diabetes.",
+  "social_history": "Smokes about one pack a day for 35 years. Alcohol on weekends, 2-3 beers. Sits at the wheel 10-12 hours a day, little physical activity. Married, two adult children.",
+
+  "vitals": {
+    "temperature_c": {"min": 36.5, "max": 36.9},
+    "heart_rate_bpm": {"min": 82, "max": 96},
+    "systolic_bp": {"min": 150, "max": 165},
+    "diastolic_bp": {"min": 90, "max": 100},
+    "resp_rate": {"min": 16, "max": 20},
+    "spo2_pct": {"min": 95, "max": 98}
+  },
+  "test_results": {
+    "General inspection": "Overweight (BMI 31). Anxious. Skin of normal colour, no cyanosis. No peripheral oedema.",
+    "Heart auscultation": "Rhythm regular. Heart sounds slightly muffled, accent of the 2nd sound over the aorta. No murmurs, no pericardial rub.",
+    "Lung auscultation": "Vesicular breathing over all fields, no crackles or wheezes.",
+    "ECG": "Sinus rhythm 88/min. Horizontal ST-segment depression of 1 mm in V4-V6 and T-wave inversion in I, aVL recorded during pain; resolves after the pain episode. No ST elevation, no pathological Q waves.",
+    "Troponin I": "High-sensitivity troponin I: 6 ng/L at admission and 7 ng/L after 3 hours (reference < 26 ng/L) — not elevated, no dynamic rise.",
+    "Lipid profile": "Total cholesterol 6.8 mmol/L, LDL 4.6 mmol/L, HDL 0.9 mmol/L, triglycerides 2.3 mmol/L.",
+    "Blood glucose": "Fasting glucose 5.9 mmol/L.",
+    "Chest X-ray": "No infiltrates. Cardiac silhouette within normal limits. Aorta not widened.",
+    "Echocardiography": "LV ejection fraction 55%. Mild hypokinesia of the lateral wall. Mild LV hypertrophy. Valves intact, no pericardial effusion.",
+    "Complete blood count": "Hb 148 g/L, WBC 7.2 ×10⁹/L, platelets 245 ×10⁹/L."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["ECG", "Troponin I"],
+  "test_reference_queries": {
+    "ECG": "ECG changes in unstable angina ST depression T wave inversion",
+    "Troponin I": "cardiac troponin to distinguish unstable angina from NSTEMI"
+  },
+  "diagnosis": {"code": "I20.0", "name": "Unstable angina"},
+  "accepted_codes": [],
+  "related_codes": ["I21.4", "I24.9", "I20.9", "I20.8", "I25.1"],
+  "differential": ["NSTEMI (I21.4)", "Stable angina", "Pulmonary embolism", "Aortic dissection", "GERD", "Costochondritis"],
+  "key_questions": [
+    {"id": "onset", "label": "Onset and course of the pain (when it started, how it changed)", "keywords": ["when did", "how long have", "since when", "start", "began", "когда", "давно"], "reference_query": "unstable angina new onset or crescendo pattern history"},
+    {"id": "location", "label": "Location of the pain", "keywords": ["where is", "where does it hurt", "where exactly", "where do you feel", "location", "which part", "point to", "где болит", "в каком месте"], "reference_query": "location of anginal chest pain retrosternal"},
+    {"id": "character", "label": "Character of the pain", "keywords": ["what kind of pain", "describe the pain", "character", "pressing", "sharp", "burning", "какая боль", "характер"], "reference_query": "character of angina pectoris pain pressing squeezing"},
+    {"id": "radiation", "label": "Radiation of the pain", "keywords": ["spread", "radiat", "go anywhere", "move to", "left arm", " arm", "jaw", "отдает", "отдаёт", "иррадиир"], "reference_query": "radiation of anginal pain to left arm and jaw"},
+    {"id": "provocation", "label": "Triggers: exertion, rest, emotions", "keywords": ["trigger", "provok", "exertion", "stairs", "walking", "at rest", "what makes it worse", "brings it on", "нагрузк", "провоцир"], "reference_query": "angina at rest and on minimal exertion unstable angina definition"},
+    {"id": "relief_duration", "label": "Duration and what relieves it (rest, nitroglycerin)", "keywords": ["how long does it last", "how many minutes", "relieve", "helps", "nitro", "better", "сколько длится", "помогает", "облегч"], "reference_query": "duration of angina episode and response to nitroglycerin"},
+    {"id": "associated", "label": "Associated symptoms (dyspnoea, sweating, nausea)", "keywords": ["sweat", "short of breath", "breathless", "nause", "other symptoms", "anything else", "одышк", "пот", "тошнот"], "reference_query": "associated symptoms of acute coronary syndrome dyspnea diaphoresis"},
+    {"id": "risk_factors", "label": "Cardiovascular risk factors (smoking, hypertension, lipids, family history)", "keywords": ["smok", "cigarette", "blood pressure", "hypertens", "cholesterol", "diabet", "family", "father", "mother", "relatives", "кур", "давлени", "холестерин", "родствен"], "reference_query": "cardiovascular risk factors for coronary heart disease"}
+  ]
+}

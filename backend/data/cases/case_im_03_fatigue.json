@@ -1,0 +1,63 @@
+{
+  "code": "CASE-IM-03",
+  "title": "Fatigue and shortness of breath on exertion",
+  "specialty": "Internal Medicine",
+  "difficulty": "easy",
+  "status": "published",
+
+  "patient": {"name": "Madina", "sex": "female", "age": {"min": 28, "max": 40}, "occupation": "accountant"},
+  "personality": "Calm, a little embarrassed to talk about periods, gives short answers",
+  "chief_complaint": "I feel tired all the time, doctor, and I get out of breath on the stairs.",
+  "history_present_illness": "For about four months I have been getting more and more tired. I get out of breath and my heart pounds when I climb to the third floor. I get dizzy when I stand up quickly. My hair falls out more than before and my nails break easily. For about a year my periods have been very heavy and last 7-8 days, I change pads every 1-2 hours on the first days. Recently I started wanting to chew ice.",
+  "symptoms": [
+    {"name": "fatigue", "details": "for about four months, getting worse"},
+    {"name": "shortness of breath and pounding heart", "details": "only on exertion, for example on the stairs"},
+    {"name": "dizziness", "details": "when standing up quickly"},
+    {"name": "hair loss and brittle nails", "details": "noticed in the last months"},
+    {"name": "heavy periods", "details": "for about a year, 7-8 days, very heavy on the first days"},
+    {"name": "craving to chew ice", "details": "recently"}
+  ],
+  "negative_symptoms": ["black or tarry stool", "blood in stool", "weight loss", "fever", "night sweats", "chest pain", "leg swelling", "yellow skin", "numbness in hands or feet", "abdominal pain"],
+  "past_medical_history": "Two pregnancies, two deliveries, the last one 3 years ago. No chronic diseases. No operations.",
+  "medications": "Nothing regularly. Took vitamins for a month last year.",
+  "allergies": "None",
+  "family_history": "Mother had 'low haemoglobin' in her youth. No blood diseases known.",
+  "social_history": "Does not smoke, no alcohol. Eats meat rarely, mostly bread, pasta and tea. Office work.",
+
+  "vitals": {
+    "temperature_c": {"min": 36.4, "max": 36.8},
+    "heart_rate_bpm": {"min": 92, "max": 104},
+    "systolic_bp": {"min": 100, "max": 110},
+    "diastolic_bp": {"min": 60, "max": 70},
+    "resp_rate": {"min": 16, "max": 18},
+    "spo2_pct": {"min": 97, "max": 99}
+  },
+  "test_results": {
+    "General inspection": "Pale skin and conjunctivae. Dry skin, brittle spoon-shaped nails (koilonychia). Angular cheilitis. No jaundice, no lymphadenopathy.",
+    "Heart auscultation": "Tachycardia, soft systolic murmur at the apex, not radiating.",
+    "Complete blood count": "Hb 84 g/L, RBC 3.4 ×10¹²/L, MCV 68 fL, MCH 21 pg, RDW 18%, reticulocytes 0.8%, WBC 6.1 ×10⁹/L, platelets 410 ×10⁹/L. Smear: hypochromia, microcytosis, anisocytosis.",
+    "Serum iron and ferritin": "Serum iron 4.2 µmol/L (ref 9-30), ferritin 5 ng/mL (ref 15-150), total iron-binding capacity 82 µmol/L (increased), transferrin saturation 5%.",
+    "Blood biochemistry": "Bilirubin, ALT, AST, creatinine within normal limits.",
+    "Abdominal ultrasound": "No abnormalities of liver, spleen, kidneys. Uterus slightly enlarged, small intramural myoma 2 cm."
+  },
+  "default_result": "No abnormalities detected",
+  "key_tests": ["Complete blood count", "Serum iron and ferritin"],
+  "test_reference_queries": {
+    "Complete blood count": "microcytic hypochromic anaemia MCV complete blood count",
+    "Serum iron and ferritin": "low ferritin diagnosis of iron deficiency anaemia"
+  },
+  "diagnosis": {"code": "D50.0", "name": "Iron deficiency anaemia secondary to chronic blood loss"},
+  "accepted_codes": ["D50.9"],
+  "related_codes": ["D64.9", "D63.8", "D56.9"],
+  "differential": ["Anaemia of chronic disease", "Thalassaemia", "B12/folate deficiency", "Hypothyroidism"],
+  "key_questions": [
+    {"id": "onset", "label": "Onset and course of fatigue", "keywords": ["when did", "since when", "how long have", "start", "когда", "давно"], "reference_query": "clinical features of anaemia fatigue gradual onset"},
+    {"id": "exertion", "label": "Exercise tolerance, dyspnoea, palpitations", "keywords": ["breath", "stairs", "palpitat", "heart pound", "одышк", "сердцебиен"], "reference_query": "anaemia symptoms dyspnoea on exertion palpitations"},
+    {"id": "menstrual", "label": "Menstrual history (heavy bleeding)", "keywords": ["period", "menstru", "bleeding", "менстру", "месячн"], "reference_query": "menorrhagia cause of iron deficiency anaemia in women"},
+    {"id": "gi_bleeding", "label": "Gastrointestinal blood loss (stool colour)", "keywords": ["stool", "black", "tarry", "blood in", "стул", "кал"], "reference_query": "occult gastrointestinal bleeding iron deficiency"},
+    {"id": "diet", "label": "Diet and iron intake", "keywords": ["diet", "eat", "meat", "food", "питани", "мясо", "едите"], "reference_query": "dietary causes of iron deficiency"},
+    {"id": "sideropenic", "label": "Sideropenic signs (pica, hair, nails)", "keywords": ["ice", "chalk", "craving", "hair", "nail", "taste", "мел", "волос", "ногт"], "reference_query": "sideropenic syndrome pica koilonychia"},
+    {"id": "pregnancy", "label": "Pregnancies, deliveries, breastfeeding", "keywords": ["pregnan", "children", "deliver", "breastfe", "беремен", "роды", "дети"], "reference_query": "pregnancy and iron requirements"},
+    {"id": "weight_fever", "label": "Red flags: weight loss, fever, night sweats", "keywords": ["weight", "fever", "night sweat", "temperature", "похуд", "вес", "температур", "потлив"], "reference_query": "red flags anaemia malignancy weight loss"}
+  ]
+}
