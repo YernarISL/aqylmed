@@ -151,3 +151,188 @@ export interface ChatRequest {
   /** Non-empty after trim, max 1000 chars */
   question: string;
 }
+
+// ======================= API responses =======================
+
+export interface CaseCard {
+  id: number;
+  code: string;
+  title: string;
+  specialty: string;
+  difficulty: Difficulty;
+  chief_complaint: string;
+  patient: { sex: Sex; age_range: [number, number] };
+}
+
+export interface CaseList {
+  count: number;
+  items: CaseCard[];
+}
+
+export interface Specialty {
+  specialty: string;
+  count: number;
+}
+
+/** Group name → list of test names. */
+export type TestCatalogue = Record<string, string[]>;
+
+export interface IcdItem {
+  code: string;
+  name: string;
+}
+
+export interface Vitals {
+  temperature_c: number;
+  heart_rate_bpm: number;
+  blood_pressure: string;
+  systolic_bp: number;
+  diastolic_bp: number;
+  resp_rate: number;
+  spo2_pct: number;
+}
+
+export interface AttemptStart {
+  attempt_id: number;
+  case: CaseCard;
+  patient: { name: string; age: number; sex: Sex; occupation: string };
+  vitals: Vitals;
+  chief_complaint: string;
+  started_at: string;
+}
+
+export interface AttemptEvent {
+  id: number;
+  kind: "question" | "answer" | "test";
+  content: string;
+  created_at: string;
+  test_name?: string;
+  /** Only present after submission. */
+  key_question_ids?: string[];
+}
+
+export interface Citation {
+  chunk_id: number;
+  textbook_id: number;
+  book_title: string;
+  chapter: string;
+  page: number;
+  quote: string;
+  similarity: number;
+  link: string;
+  /** [n] marker in a chatbot answer */
+  ref?: number;
+}
+
+export type Verdict = "correct" | "related" | "incorrect";
+
+export interface ScoreParts {
+  history: number;
+  tests: number;
+  diagnosis: number;
+}
+
+export interface AttemptResult {
+  score: number;
+  parts: ScoreParts;
+  max_parts: ScoreParts;
+  label: string;
+  diagnosis: {
+    verdict: Verdict;
+    submitted: { code: string; name: string | null };
+    correct: DiagnosisRef;
+    differential: string[];
+  };
+  history: {
+    asked: { id: string; label: string }[];
+    missed: { id: string; label: string; reference: Citation | null }[];
+    questions_total: number;
+  };
+  tests: {
+    ordered: string[];
+    key_ordered: string[];
+    missed: { name: string; reference: Citation | null }[];
+  };
+}
+
+export type AttemptStatus = "active" | "submitted" | "abandoned";
+
+export interface AttemptDetail extends AttemptStart {
+  status: AttemptStatus;
+  submitted_at: string | null;
+  result: AttemptResult | null;
+  events: AttemptEvent[];
+}
+
+export interface ActiveAttempt extends AttemptStart {
+  events: AttemptEvent[];
+}
+
+export interface HistoryItem {
+  attempt_id: number;
+  date: string;
+  case: { id: number; title: string; specialty: string };
+  score: number;
+  label: string | null;
+}
+
+export interface ChatAnswer {
+  answer: string;
+  fallback: boolean;
+  citations: Citation[];
+  latency_ms: number;
+}
+
+export interface Chunk {
+  chunk_id: number;
+  textbook_id: number;
+  book_title: string;
+  author: string;
+  chapter: string;
+  page: number;
+  text: string;
+}
+
+export type TextbookStatus = "processing" | "ready" | "failed";
+
+export interface Textbook {
+  id: number;
+  title: string;
+  author: string;
+  lang: string;
+  status: TextbookStatus;
+  error: string | null;
+  pages_count: number | null;
+  chunks_count: number | null;
+  created_at: string;
+}
+
+export interface ChatLogs {
+  stats: {
+    count: number;
+    fallback_share: number | null;
+    latency_ms_median: number | null;
+    latency_ms_max: number | null;
+    total_questions: number;
+  };
+  items: {
+    id: number;
+    question: string;
+    fallback: boolean;
+    best_similarity: number | null;
+    latency_ms: number;
+    citations: number;
+    created_at: string;
+  }[];
+}
+
+export interface AdminCase extends CaseCard {
+  status: CaseStatus;
+  diagnosis: DiagnosisRef;
+}
+
+export interface AdminCaseDetail {
+  id: number;
+  status: CaseStatus;
+  data: CaseTemplate;
+}

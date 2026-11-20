@@ -1,0 +1,43 @@
+.citation {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background: var(--bg);
+  font-size: 14px;
+}
+
+.source {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ref {
+  font-family: var(--mono);
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.toggle {
+  margin-left: auto;
+}
+
+.quote {
+  margin: 6px 0 0;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.full {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  white-space: pre-wrap;
+  max-height: 320px;
+  overflow: auto;
+}

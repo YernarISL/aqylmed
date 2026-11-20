@@ -1,0 +1,108 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.linkButton {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.linkButton:hover {
+  background: var(--accent-hover);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--border);
+}
+.ghost:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.danger {
+  background: transparent;
+  color: var(--bad);
+  border-color: var(--border);
+}
+.danger:hover:not(:disabled) {
+  background: var(--bad-soft);
+}
+
+.small {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--surface-2);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.ok {
+  background: var(--ok-soft);
+  color: var(--ok);
+}
+.warn {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.bad {
+  background: var(--bad-soft);
+  color: var(--bad);
+}
+.accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.error {
+  color: var(--bad);
+  font-size: 14px;
+  margin: 8px 0;
+  white-space: pre-wrap;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.pageHeader h1 {
+  margin: 0;
+}

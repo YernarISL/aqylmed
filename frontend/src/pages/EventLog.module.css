@@ -1,0 +1,44 @@
+.question,
+.answer,
+.test {
+  max-width: 85%;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  font-size: 14px;
+  white-space: pre-wrap;
+}
+
+.question {
+  margin-left: auto;
+  background: var(--accent-soft);
+}
+
+.answer {
+  background: var(--surface-2);
+}
+
+.test {
+  max-width: 100%;
+  border: 1px dashed var(--border);
+  background: var(--surface);
+}
+
+.who,
+.testName {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.testName {
+  color: var(--accent);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}

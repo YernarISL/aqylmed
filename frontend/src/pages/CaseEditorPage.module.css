@@ -1,0 +1,16 @@
+.editor {
+  min-height: 70vh;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: vertical;
+  tab-size: 2;
+}
+
+.errors {
+  padding: 10px 12px;
+  background: var(--bad-soft);
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 13px;
+}
