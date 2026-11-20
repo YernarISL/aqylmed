@@ -5,8 +5,10 @@ import axios, {
 } from "axios";
 import type { NavigateFunction } from "react-router-dom";
 
+// Local dev: "/api/v1" goes through the Vite proxy. Production (Vercel): set VITE_API_URL to the
+// Render backend, e.g. https://aqylmed-api.onrender.com/api/v1 — it is baked in at build time.
 export const api = axios.create({
-  baseURL: "/api/v1",
+  baseURL: import.meta.env.VITE_API_URL || "/api/v1",
 });
 
 // Attach the token to every request. Registered once at module load (not inside a React effect),
