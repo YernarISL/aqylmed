@@ -1,0 +1,109 @@
+.top {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 900px) {
+  .top,
+  .columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.total {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--mono);
+}
+.total span {
+  font-size: 18px;
+  color: var(--muted);
+  margin-left: 2px;
+}
+
+.bars {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.barLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.bar {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.bar div {
+  height: 100%;
+  background: var(--accent);
+}
+
+.diag {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  margin: 0;
+}
+.diag dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+.diag dd {
+  margin: 0;
+}
+.diag :global(.mono) {
+  color: var(--accent);
+  margin-right: 4px;
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.missedTitle {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.missed {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+.missed > div {
+  width: 100%;
+}
+
+.log {
+  max-width: 820px;
+}

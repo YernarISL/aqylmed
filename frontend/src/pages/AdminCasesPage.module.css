@@ -1,0 +1,27 @@
+.filter {
+  width: auto;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.generate {
+  margin-bottom: 16px;
+}
+
+.genRow {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+}
+
+@media (max-width: 800px) {
+  .genRow {
+    grid-template-columns: 1fr;
+  }
+}

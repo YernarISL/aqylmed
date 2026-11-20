@@ -1,0 +1,170 @@
+.layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 260px;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+/* ---------- patient ---------- */
+
+.patient h2 {
+  margin-bottom: 2px;
+}
+.patient .sectionTitle {
+  margin-top: 16px;
+}
+
+.vitals {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 6px 12px;
+  margin: 0;
+  font-size: 14px;
+}
+.vitals dt {
+  color: var(--muted);
+}
+.vitals dd {
+  margin: 0;
+  text-align: right;
+  font-family: var(--mono);
+}
+
+/* ---------- interview ---------- */
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+}
+
+.log {
+  flex: 1;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 12px;
+}
+
+.ask {
+  display: flex;
+  gap: 8px;
+}
+
+/* ---------- tests ---------- */
+
+.tests {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.testGroup {
+  margin-bottom: 12px;
+}
+
+.groupName {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.test,
+.testDone {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 5px 8px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  font-weight: 400;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid transparent;
+}
+.test:hover:not(:disabled) {
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+.testDone:disabled {
+  opacity: 1;
+  color: var(--muted);
+}
+
+.check {
+  font-size: 11px;
+  color: var(--ok);
+}
+
+/* ---------- diagnosis ---------- */
+
+.diagnosis {
+  margin-top: 16px;
+}
+
+.diagRow {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.picker {
+  flex: 1;
+  position: relative;
+}
+
+.selected {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+}
+.selected button {
+  margin-left: auto;
+}
+
+.icdList {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  max-height: 260px;
+  overflow-y: auto;
+}
+.icdList button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: none;
+  font-weight: 400;
+  padding: 6px 8px;
+}
+.icdList button:hover {
+  background: var(--surface-2);
+}
+.icdList :global(.mono),
+.selected :global(.mono) {
+  color: var(--accent);
+  margin-right: 6px;
+}
