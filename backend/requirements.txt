@@ -9,8 +9,8 @@ pyjwt>=2.8
 pypdf>=5.0
 numpy>=1.26
 google-genai>=1.0
-# для Postgres раскомментируй:
-# psycopg2-binary>=2.9
+# Postgres (Render)
+psycopg2-binary>=2.9
 
 # тесты
 pytest>=8.0

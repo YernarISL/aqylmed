@@ -3,8 +3,12 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from app.config import DATABASE_URL
 
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
-engine = create_engine(DATABASE_URL, connect_args=connect_args)
+_sqlite = DATABASE_URL.startswith("sqlite")
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"check_same_thread": False} if _sqlite else {},
+    pool_pre_ping=not _sqlite,  # Postgres на Render закрывает простаивающие соединения
+)
 SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
 
 

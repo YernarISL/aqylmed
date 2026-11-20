@@ -1,0 +1,34 @@
+# Render Blueprint: FastAPI backend + free Postgres.
+# Render → New → Blueprint → pick this repo. Values marked `sync: false` are asked for on first deploy.
+services:
+  - type: web
+    name: aqylmed-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.8 # same as local development
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aqylmed-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: LLM_PROVIDER
+        value: gemini # set to "mock" until you have a valid Gemini key
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADMIN_EMAIL # first admin, created on startup if missing
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+
+databases:
+  - name: aqylmed-db
+    plan: free
+    databaseName: aqylmed
+    user: aqylmed

@@ -16,6 +16,13 @@ def _float(name: str, default: float) -> float:
 # --- База данных ---
 # SQLite для прототипа. Для Postgres: postgresql+psycopg2://user:pass@host:5432/aqylmed
 DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{BASE_DIR / 'aqylmed.db'}")
+# Render/Heroku иногда отдают старую схему postgres:// — SQLAlchemy 2 её не принимает
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = "postgresql://" + DATABASE_URL[len("postgres://"):]
+
+# Первый админ создаётся при старте, если задан (на бесплатном Render нет Shell для scripts.create_user)
+ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "")
 
 # --- Авторизация (JWT) ---
 JWT_SECRET = os.getenv("JWT_SECRET", "dev-only-secret-change-me-in-production-32b")

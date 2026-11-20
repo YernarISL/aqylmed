@@ -4,13 +4,33 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app import config
-from app.db import init_db
+from sqlalchemy import func, select
+
+from app.db import SessionLocal, init_db
+from app.models import ClinicCase, User
 from app.routers import attempts, auth, cases, chat, textbooks
+from app.security import hash_password
+
+
+def seed():
+    """Для хостинга без Shell (бесплатный Render): пустая БД сама получает кейсы и первого админа.
+    Ничего не перезаписывает — правки преподавателей и пароли не теряются при перезапуске."""
+    from scripts.load_cases import load
+
+    with SessionLocal() as db:
+        if not db.scalar(select(func.count()).select_from(ClinicCase)):
+            load(db)
+        email = config.ADMIN_EMAIL.strip().lower()
+        if email and config.ADMIN_PASSWORD and not db.scalar(select(User).where(User.email == email)):
+            db.add(User(email=email, password_hash=hash_password(config.ADMIN_PASSWORD), role="admin",
+                        first_name="Admin"))
+            db.commit()
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
+    seed()
     config.UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     yield
 

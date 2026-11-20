@@ -45,7 +45,7 @@ def _outline_chapters(reader: PdfReader) -> list[tuple[int, str]]:
                 continue
             page = reader.get_destination_page_number(item)
             if page is not None and page >= 0:
-                result.append((page, str(item.title).strip()))
+                result.append((page, str(item.title).strip()[:255]))  # VARCHAR(255) в Postgres
     except Exception:
         return []
     return sorted(result)
