@@ -80,3 +80,13 @@ def test_delete_textbook_removes_it_from_search(client, student, admin, textbook
     r = client.post("/api/v1/chat/ask", json={"question": "What are the first-line drugs for stable angina?"},
                     headers=student).json()
     assert r["fallback"] is True
+
+
+def test_rag_response_contract_in_openapi(client):
+    """Фронтенд (src/api/rag.ts) опирается на эти схемы ответов — они должны быть в OpenAPI."""
+    spec = client.get("/openapi.json").json()
+    schemas = spec["components"]["schemas"]
+    for name in ("ChatAnswer", "Citation", "TextbookOut", "ChunkOut", "ChatLogsOut"):
+        assert name in schemas
+    ask = spec["paths"]["/api/v1/chat/ask"]["post"]["responses"]["200"]["content"]["application/json"]["schema"]
+    assert ask["$ref"].endswith("/ChatAnswer")

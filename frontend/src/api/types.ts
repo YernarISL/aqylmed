@@ -151,3 +151,89 @@ export interface ChatRequest {
   /** Non-empty after trim, max 1000 chars */
   question: string;
 }
+
+// ======================= RAG chatbot & textbooks =======================
+// Mirrors backend/app/schemas.py (ChatAnswer, Citation, TextbookOut, ChunkOut, ChatLogsOut).
+
+export type TextbookStatus = "uploaded" | "processing" | "ready" | "failed";
+
+export interface Citation {
+  chunk_id: number;
+  textbook_id: number;
+  book_title: string;
+  chapter: string;
+  page: number;
+  /** Verbatim indexed fragment */
+  quote: string;
+  similarity: number;
+  /** API path to the full fragment, e.g. /api/v1/textbooks/1/chunks/42 */
+  link: string;
+  /** Number of the [n] marker in the answer text (only in /chat/ask) */
+  ref?: number | null;
+}
+
+export interface ChatAnswer {
+  /** ≤ 150 words, contains [n] markers that map to citations[].ref */
+  answer: string;
+  /** true — nothing relevant in the textbooks; citations is empty */
+  fallback: boolean;
+  citations: Citation[];
+  latency_ms: number;
+}
+
+export interface Textbook {
+  id: number;
+  title: string;
+  author: string;
+  lang: string;
+  status: TextbookStatus;
+  /** Reason when status = "failed" */
+  error: string | null;
+  pages_count: number;
+  chunks_count: number;
+  /** ISO datetime */
+  created_at: string;
+}
+
+export interface UploadTextbookRequest {
+  /** PDF only, ≤ 100 MB */
+  file: File;
+  title: string;
+  author?: string;
+  /** default "en" */
+  lang?: string;
+}
+
+export interface TextChunk {
+  chunk_id: number;
+  textbook_id: number;
+  book_title: string;
+  author: string;
+  chapter: string;
+  page: number;
+  text: string;
+}
+
+export interface ChatLogStats {
+  count: number;
+  fallback_share: number | null;
+  latency_ms_median: number | null;
+  latency_ms_max: number | null;
+  total_questions: number;
+}
+
+export interface ChatLogItem {
+  id: number;
+  question: string;
+  fallback: boolean;
+  best_similarity: number | null;
+  latency_ms: number;
+  /** Number of citations in the answer */
+  citations: number;
+  created_at: string;
+}
+
+export interface ChatLogs {
+  stats: ChatLogStats;
+  items: ChatLogItem[];
+}
