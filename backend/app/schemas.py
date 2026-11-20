@@ -1,4 +1,5 @@
 """Pydantic-схемы: шаблон клинического кейса и тела запросов/ответов API."""
+from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, EmailStr, Field, field_validator, model_validator
@@ -189,3 +190,74 @@ class ChatRequest(BaseModel):
     question: str = Field(max_length=1000)
 
     _strip = field_validator("question")(_strip_not_empty)
+
+
+# ======================= RAG: ответы API (контракт для фронтенда, SCRUM-8) =======================
+
+TextbookStatus = Literal["uploaded", "processing", "ready", "failed"]
+
+
+class Citation(BaseModel):
+    """Цитата из учебника (US-06). `link` открывает фрагмент целиком: GET /textbooks/{id}/chunks/{chunk_id}."""
+
+    chunk_id: int
+    textbook_id: int
+    book_title: str
+    chapter: str
+    page: int
+    quote: str
+    similarity: float
+    link: str
+    ref: int | None = Field(default=None, description="Номер [n] в тексте ответа; есть только в /chat/ask")
+
+
+class ChatAnswer(BaseModel):
+    answer: str
+    fallback: bool = Field(description="true — ответа в учебниках нет, citations пустой, LLM не вызывался")
+    citations: list[Citation]
+    latency_ms: int
+
+
+class TextbookOut(BaseModel):
+    id: int
+    title: str
+    author: str
+    lang: str
+    status: TextbookStatus
+    error: str | None
+    pages_count: int
+    chunks_count: int
+    created_at: datetime
+
+
+class ChunkOut(BaseModel):
+    chunk_id: int
+    textbook_id: int
+    book_title: str
+    author: str
+    chapter: str
+    page: int
+    text: str
+
+
+class ChatLogStats(BaseModel):
+    count: int
+    fallback_share: float | None
+    latency_ms_median: int | None
+    latency_ms_max: int | None
+    total_questions: int
+
+
+class ChatLogItem(BaseModel):
+    id: int
+    question: str
+    fallback: bool
+    best_similarity: float | None
+    latency_ms: int
+    citations: int = Field(description="Количество цитат в ответе")
+    created_at: datetime
+
+
+class ChatLogsOut(BaseModel):
+    stats: ChatLogStats
+    items: list[ChatLogItem]

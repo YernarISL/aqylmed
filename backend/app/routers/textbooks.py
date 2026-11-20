@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from app import config
 from app.db import get_db
 from app.models import Textbook, TextChunk, User
+from app.schemas import ChunkOut, TextbookOut
 from app.security import get_current_user, require_admin
 from app.services import rag
 
@@ -23,7 +24,7 @@ def book_out(b: Textbook) -> dict:
     }
 
 
-@router.post("", status_code=202)
+@router.post("", status_code=202, response_model=TextbookOut)
 async def upload(
     background: BackgroundTasks,
     file: UploadFile = File(..., description="Approved textbook PDF"),
@@ -52,12 +53,12 @@ async def upload(
     return book_out(book)
 
 
-@router.get("")
+@router.get("", response_model=list[TextbookOut])
 def list_books(db: Session = Depends(get_db), _: User = Depends(get_current_user)):
     return [book_out(b) for b in db.scalars(select(Textbook).order_by(Textbook.id))]
 
 
-@router.get("/{book_id}")
+@router.get("/{book_id}", response_model=TextbookOut)
 def get_book(book_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)):
     b = db.get(Textbook, book_id)
     if not b:
@@ -65,7 +66,7 @@ def get_book(book_id: int, db: Session = Depends(get_db), _: User = Depends(get_
     return book_out(b)
 
 
-@router.post("/{book_id}/reindex", status_code=202)
+@router.post("/{book_id}/reindex", status_code=202, response_model=TextbookOut)
 def reindex(book_id: int, background: BackgroundTasks, db: Session = Depends(get_db), _: User = Depends(require_admin)):
     b = db.get(Textbook, book_id)
     if not b:
@@ -88,7 +89,7 @@ def delete_book(book_id: int, db: Session = Depends(get_db), _: User = Depends(r
     rag.index.invalidate()
 
 
-@router.get("/{book_id}/chunks/{chunk_id}")
+@router.get("/{book_id}/chunks/{chunk_id}", response_model=ChunkOut)
 def get_chunk(book_id: int, chunk_id: int, db: Session = Depends(get_db), _: User = Depends(get_current_user)):
     """Открыть цитату: книга, глава, страница и дословный проиндексированный текст (US-06)."""
     c = db.get(TextChunk, chunk_id)
