@@ -36,9 +36,13 @@ def _client():
 
     if not config.GEMINI_API_KEY:
         raise LLMError("GEMINI_API_KEY is not set (or use LLM_PROVIDER=mock)")
+    # SDK передаёт таймаут в API как серверный дедлайн, а Gemini отвергает дедлайн < 10 с
+    # (400 INVALID_ARGUMENT: "Minimum allowed deadline is 10s") — поэтому не ниже 10 с.
+    timeout_s = max(config.LLM_TIMEOUT_SECONDS, 10.0)
     return genai.Client(
         api_key=config.GEMINI_API_KEY,
-        http_options=types.HttpOptions(timeout=int(config.LLM_TIMEOUT_SECONDS * 1000)),
+        # system_instruction доступен только в v1beta (новые SDK по умолчанию ходят в v1)
+        http_options=types.HttpOptions(api_version="v1beta", timeout=int(timeout_s * 1000)),
     )
 
 

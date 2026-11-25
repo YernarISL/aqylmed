@@ -30,7 +30,9 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("API_KEY")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 GEMINI_EMBEDDING_MODEL = os.getenv("GEMINI_EMBEDDING_MODEL", "gemini-embedding-001")
 EMBEDDING_DIM = int(os.getenv("EMBEDDING_DIM", 768))
-LLM_TIMEOUT_SECONDS = _float("LLM_TIMEOUT_SECONDS", 4.5)  # NFR-02: ответ ≤ 5 с
+# Gemini API не принимает дедлайн меньше 10 с. NFR-02 (ответ ≤ 5 с) держим за счёт
+# flash-модели без thinking, а не таймаута.
+LLM_TIMEOUT_SECONDS = _float("LLM_TIMEOUT_SECONDS", 10)
 
 # --- RAG (US-05, US-06, US-10) ---
 RAG_TOP_K = int(os.getenv("RAG_TOP_K", 5))                    # бизнес-правило US-05 (1)
